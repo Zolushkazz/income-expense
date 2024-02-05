@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Login } from "@/components/Login";
+import { LoadingEnter } from "@/components/LoadingEnter";
 
 export default function Home() {
   return (
     <div className="w-[100vw]  h-[100vh]">
-      <Login />
+      <LoadingEnter />
     </div>
   );
 }
