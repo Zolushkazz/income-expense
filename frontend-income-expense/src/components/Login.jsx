@@ -17,12 +17,8 @@ export const Login = () => {
     e.preventDefault();
     try {
       await axios.post(url, userData).then((res) => {
-     
-        if (res.data !== "Email or password is incorrect") {
-          push("/");
-        } else {
-          alert(res.data);
-        }
+        localStorage.setItem("token", res.data);
+        push("/");
       });
     } catch (error) {
       console.log(error);
