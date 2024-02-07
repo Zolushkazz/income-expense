@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { CurrencySelect } from "./CurrencySelect";
+// import { CurrencySelect } from "./CurrencySelect";
 import { useState } from "react";
 
 export const CurrencyStep = () => {
@@ -10,15 +10,13 @@ export const CurrencyStep = () => {
 
   console.log(currency);
   return (
-    <div className="w-full flex flex-col items-center gap-24 mt-24">
+    <div className="w-[100vw] flex flex-col items-center gap-24 mt-24">
       <Image src="/geld.png" width={120} height={50} alt="" />
       <ul className="steps steps-vertical lg:steps-horizontal w-[20%] flex flex-col items-center step-secondary-container">
         <li className={`step step-primary`}>Currency</li>
         <li className={`step ${step >= 2 ? "step-primary" : ""}`}>Balance</li>
         <li className={`step ${step >= 3 ? "step-primary" : ""}`}>Finish</li>
       </ul>
-
-      <CurrencySelect setCurrency={setCurrency} currency={currency} />
     </div>
   );
 };

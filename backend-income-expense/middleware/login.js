@@ -1,5 +1,6 @@
 import fs from "fs";
 import { compareHash } from "../utils/password-hash.js";
+import jwt from "jsonwebtoken";
 
 const loginDb = "./models/users.json";
 
@@ -21,7 +22,12 @@ export const loginMiddleware = async (req, res, next) => {
     const pass = compareHash(password, exactLoginer.password);
     console.log(pass);
     if (pass) {
-    req.userData = exactLoginer
+      const token = jwt.sign(
+        { email: exactLoginer.email },
+        process.env.JWT_SECRET || "defaultSecret",
+        { expiresIn: "1d" }
+      );
+      req.Token = token;
       next();
     } else {
       throw new Error("invalid email or password");
