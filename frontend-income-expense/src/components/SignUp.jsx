@@ -3,7 +3,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export const SignUp = () => {
+export const SignUp = (props) => {
+  const { button } = props;
+
   const [userData, setUserData] = useState({});
   const [confirmPass, setConfirmPass] = useState({});
 
@@ -25,20 +27,25 @@ export const SignUp = () => {
   };
 
   const { password, rePassword } = confirmPass;
+
   console.log(confirmPass);
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== rePassword) return alert("Pass buruu");
     try {
       await axios.post(url, userData);
-      push("/login ");
+      button();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <form className="w-full h-full flex">
+    <form
+      className="w-full h-full flex items-center justify-center "
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col gap-[60px] items-center w-1/2 h-full justify-center  ">
         <div className="flex items-center gap-4">
           <Image src="/geldLogo.png" width={23} height={23} alt="" />
@@ -57,13 +64,15 @@ export const SignUp = () => {
             name="name"
             type="text"
             placeholder="Name"
+            required
           />
           <input
             onChange={handleChange}
             className="w-full px-5 py-3 border-2 rounded-md bg-gray-100 text-2xl"
             name="email"
-            type="text"
+            type="email"
             placeholder="Email"
+            required
           />
           <input
             onChange={handleChange}
@@ -71,6 +80,7 @@ export const SignUp = () => {
             name="password"
             type="password"
             placeholder="Password"
+            required
           />
           <input
             onChange={handleChange}
@@ -78,9 +88,10 @@ export const SignUp = () => {
             name="rePassword"
             type="password"
             placeholder="Re-password"
+            required
           />
           <button
-            onClick={handleSubmit}
+            type="submit"
             className="bg-[#0166FF] w-full px-5 py-3 rounded-3xl text-white text-2xl"
           >
             Sign Up
@@ -96,7 +107,7 @@ export const SignUp = () => {
           </p>
         </div>
       </div>
-      <div className="bg-[#0166FF] w-1/2 h-full"></div>
+      <div className="bg-[#0166FF]  w-1/2 h-screen"></div>
     </form>
   );
 };

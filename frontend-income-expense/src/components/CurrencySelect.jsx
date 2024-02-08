@@ -2,6 +2,7 @@ import { PiMoneyFill } from "react-icons/pi";
 import { StepperButton } from "./StepperButton";
 import { CurrencyStep } from "./CurrencyStep";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const options = [
   { value: "mnt", option: "MNT-Mongolian Tugrik" },
@@ -12,7 +13,14 @@ const options = [
   { value: "euro", option: "EUR-Europian Euro" },
 ];
 
-export const CurrencySelect = () => {
+export const CurrencySelect = (props) => {
+  const { button } = props;
+
+  const { push } = useRouter();
+
+  // const jumpToPage = () => {
+  //   push("/signupPage");
+  // };
   const [currency, setCurrency] = useState("");
   const text = "Confirm";
 
@@ -22,7 +30,7 @@ export const CurrencySelect = () => {
 
   return (
     <div className="flex flex-col  w-full h-full items-center gap-[200px] mt-24">
-      <CurrencyStep />
+      <CurrencyStep count={1} />
       <div className="flex flex-col items-center gap-10 w-full ">
         <div className="flex flex-col justify-start w-full h-1/3 items-center ">
           <div className="bg-[#0166FF] w-[60px] h-[60px] rounded-full flex items-center justify-center">
@@ -53,12 +61,12 @@ export const CurrencySelect = () => {
               </option>
             ))}
           </select>
-          <p className="w-[25%] text-lg text-[#475569]">
+          <p className="w-[25%] text-2xl text-[#475569]">
             Your base currency should be the one you use most often. All
             transaction in other currencies will be calculated based on this one
           </p>
         </div>
-        <StepperButton text={text} />
+        <StepperButton onClick={button} text={text} />
       </div>
     </div>
   );
