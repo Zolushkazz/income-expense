@@ -1,7 +1,7 @@
-import { BalanceStep } from "@/components/BalanceStep";
-import { SignUp } from "../../components/SignUp";
-import { CurrencySelect } from "@/components/CurrencySelect";
-import { FinishStep } from "@/components/FinishStep";
+import { BalanceStep } from "@/components/stepper/BalanceStep";
+import { SignUp } from "../../components/signLogin/SignUp";
+import { CurrencySelect } from "@/components/stepper/CurrencySelect";
+import { FinishStep } from "@/components/stepper/FinishStep";
 import { useState } from "react";
 
 const Stepper = [SignUp, CurrencySelect, BalanceStep, FinishStep];

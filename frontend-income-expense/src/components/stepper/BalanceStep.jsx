@@ -1,5 +1,5 @@
 import { PiCoinsFill } from "react-icons/pi";
-import { StepperButton } from "./StepperButton";
+import { StepperButton } from "../signLogin/StepperButton";
 import { CurrencyStep } from "./CurrencyStep";
 
 export const BalanceStep = (props) => {

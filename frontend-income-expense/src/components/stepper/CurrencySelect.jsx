@@ -1,5 +1,5 @@
 import { PiMoneyFill } from "react-icons/pi";
-import { StepperButton } from "./StepperButton";
+import { StepperButton } from "../signLogin/StepperButton";
 import { CurrencyStep } from "./CurrencyStep";
 import { useState } from "react";
 import { useRouter } from "next/navigation";

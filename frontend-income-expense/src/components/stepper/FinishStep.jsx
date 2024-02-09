@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CurrencyStep } from "./CurrencyStep";
-import { StepperButton } from "./StepperButton";
+import { StepperButton } from "../signLogin/StepperButton";
+import Link from "next/link";
 
 export const FinishStep = (props) => {
   const text = "Go to Dashboard";
@@ -19,7 +20,13 @@ export const FinishStep = (props) => {
           </p>
         </div>
       </div>
-      <StepperButton text={text} />
+      <Link
+        href="/dashboard"
+        key={props}
+        className="w-[100%] flex justify-center"
+      >
+        <StepperButton onClick="/dashboard" text={text} />
+      </Link>
     </div>
   );
 };
