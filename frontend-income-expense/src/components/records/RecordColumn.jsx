@@ -4,8 +4,8 @@ import { ColCategory } from "./ColCategory";
 
 export const RecordCol = () => {
   return (
-    <div className="w-[30%] h-full bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
-      <h2 className="text-lg font-semibold">Records</h2>
+    <div className="w-1/5 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
+      <h2 className="text-xl font-semibold">Records</h2>
       <div className="flex flex-col gap-4">
         <button className="bg-[#0166FF] rounded-[20px] text-white py-1">
           + Add

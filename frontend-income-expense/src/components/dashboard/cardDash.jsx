@@ -10,12 +10,12 @@ import { RecordCard } from "./RecordCard";
 
 export const CardDash = () => {
   return (
-    <div className="bg-gray-50 w-full h-full gap-4 flex flex-col items-center">
+    <div className="bg-gray-50 w-full h-full gap-4 flex flex-col items-center mt-12">
       <Navbar />
       <div className="flex gap-6 mt-6">
         <div className="relative">
           <div>
-            <Image src="/Large.png" width={380} height={230} />
+            <Image src="/Large.png" width={430} height={230} />
           </div>
           <div className="absolute top-6 left-6">
             <Image src="/geldWhite.png" width={70} height={70} />
@@ -25,7 +25,7 @@ export const CardDash = () => {
             <p className="text-2xl text-white">10,000,00</p>
           </div>
         </div>
-        <div className="bg-white w-[380px] h-[215px] rounded-2xl">
+        <div className="bg-white w-[430px] h-[230px] rounded-2xl">
           <div className="flex justify-start items-center gap-4 px-8 py-3 ">
             <Dot />
             <p className="text-xl font-bold">Your income</p>
@@ -43,7 +43,7 @@ export const CardDash = () => {
           </div>
         </div>
 
-        <div className="bg-white w-[380px] h-[215px] rounded-2xl">
+        <div className="bg-white w-[430px] h-[230px] rounded-2xl">
           <div className="flex justify-start items-center gap-4 px-8 py-3 ">
             <BlueDot />
             <p className="text-xl font-bold">Total expenses</p>

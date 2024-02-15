@@ -29,6 +29,7 @@ export const loginMiddleware = async (req, res, next) => {
       );
       req.Token = token;
       next();
+      return;
     } else {
       res.status(400).send("invalid email or password");
     }
