@@ -17,7 +17,7 @@ export const loginMiddleware = async (req, res, next) => {
 
     console.log(exactLoginer);
     if (!exactLoginer) {
-      throw new Error("invalid email or password");
+      res.status(400).send("invalid email or password");
     }
     const pass = compareHash(password, exactLoginer.password);
     console.log(pass);
@@ -30,9 +30,9 @@ export const loginMiddleware = async (req, res, next) => {
       req.Token = token;
       next();
     } else {
-      throw new Error("invalid email or password");
+      res.status(400).send("invalid email or password");
     }
   } catch (err) {
-    res.send("Invalid password or email");
+    res.status(400).send("Invalid password or email");
   }
 };
