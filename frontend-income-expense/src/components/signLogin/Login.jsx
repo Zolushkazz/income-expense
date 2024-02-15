@@ -2,6 +2,7 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+// import Link from "next/link";
 
 export const Login = () => {
   const [userData, setUserData] = useState({});
@@ -53,6 +54,7 @@ export const Login = () => {
             name="email"
             type="text"
             placeholder="Email"
+            required
           />
           <input
             onChange={handleChange}
@@ -60,14 +62,17 @@ export const Login = () => {
             name="password"
             type="password"
             placeholder="Password"
+            required
           />
         </div>
+        {/* <Link href="/dashboard" className="w-[100%] flex justify-center"> */}
         <button
           onClick={handleSubmit}
           className="bg-[#0166FF] w-[45%] px-5 py-3 rounded-3xl text-white text-2xl"
         >
           Log in
         </button>
+        {/* </Link> */}
 
         <div className="flex gap-4">
           <p className="text-xl">Don't have account</p>

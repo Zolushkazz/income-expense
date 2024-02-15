@@ -18,7 +18,7 @@ export const Navbar = () => {
   return (
     <div className="bg-[#fff] w-full flex justify-center gap-[50%] p-4 py-8">
       <div className="flex gap-6 items-center">
-        <Image src="/geldLogo.png" width={48} height={48} alt="" />
+        <Image src="/geldLogo.png" width={40} height={40} alt="" />
         {arr.map((item) => {
           return (
             <Link
@@ -31,7 +31,7 @@ export const Navbar = () => {
               key={item.link}
               href={item.link}
             >
-              <p className=" text-xl" key={item.title}>
+              <p className=" text-md" key={item.title}>
                 {item.title}
               </p>
             </Link>
@@ -39,7 +39,7 @@ export const Navbar = () => {
         })}
       </div>
       <div className="flex gap-6">
-        <button className="bg-[#0166FF] text-2xl text-[#fff] rounded-[25px] px-4 py-2">
+        <button className="bg-[#0166FF] text-md text-[#fff] rounded-[25px] px-4 py-1">
           + Record
         </button>
         <Image
