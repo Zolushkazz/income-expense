@@ -1,15 +1,26 @@
 import { LuCircle } from "react-icons/lu";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ColCategory } from "./ColCategory";
+import { AddModal } from "../modal/AddModal";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export const RecordCol = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="w-1/5 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
+    <div className="relative w-1/5 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
       <h2 className="text-xl font-semibold">Records</h2>
       <div className="flex flex-col gap-4">
-        <button className="bg-[#0166FF] rounded-[20px] text-white py-1">
+        <button
+          onClick={() => {
+            setShowModal(true);
+          }}
+          className="bg-[#0166FF] rounded-[20px] text-white py-1"
+        >
           + Add
         </button>
+
         <input
           type="text"
           placeholder="Search"
@@ -17,6 +28,7 @@ export const RecordCol = () => {
           className="border-2 px-2 py-1 rounded-md"
         />
       </div>
+
       <div>
         <h2 className="text-md font-semibold">Types</h2>
         <div className="pl-2">
@@ -60,6 +72,9 @@ export const RecordCol = () => {
             className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
           />
         </div>
+      </div>
+      <div className="w-screen z-40 absolute inset-x-0 top-10">
+        {showModal && <AddModal setXbtn={setShowModal} />}
       </div>
     </div>
   );
