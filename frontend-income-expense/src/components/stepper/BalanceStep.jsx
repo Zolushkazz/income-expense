@@ -28,7 +28,7 @@ export const BalanceStep = (props) => {
       <div className="flex flex-col w-[25%] gap-4">
         <input
           type="text"
-          placeholder="Email"
+          placeholder="Amount"
           className="border-2 bg-slate-100 w-full h-[70px] rounded-lg p-4 text-2xl   required,"
         />
         <p className="text-xl text-[#475569]">

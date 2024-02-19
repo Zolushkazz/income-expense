@@ -1,22 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { Category } from "./Category";
-// import { GoHomeFill } from "react-icons/go";
-// import { PiForkKnifeFill } from "react-icons/pi";
-// import { FaPlusCircle } from "react-icons/fa";
-// import Select from "react-dropdown-select";
-// import {
-//   PiGiftFill,
-//   PiWineFill,
-//   PiTaxiFill,
-//   PiTShirtFill,
-// } from "react-icons/pi";
+
 export const AddModal = ({ setXbtn }) => {
   const [color, setColor] = useState(false);
 
   return (
-    <div className="w-full h-full flex justify-center items-center shadow-gray-700">
-      <div className="bg-red-500 w-fit h-fit rounded-xl ">
+    <div className="w-screen h-screen flex justify-center items-center absolute top-2 -left-[477px] bg-opacity-50 bg-black ">
+      <div className="bg-white w-fit h-fit rounded-xl ">
         <div className="flex items-center justify-between py-5 px-6">
           <h3 className="text-xl font-semibold">Add Record</h3>
           <button
@@ -64,7 +55,7 @@ export const AddModal = ({ setXbtn }) => {
               />
               <p className="absolute top-0 left-2 text-md">Amount</p>
             </div>
-            <div className="">
+            <div className="relative w-full mb-10">
               <h3>Category</h3>
 
               <Category />

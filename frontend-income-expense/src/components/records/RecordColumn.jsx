@@ -60,20 +60,29 @@ export const RecordCol = () => {
       </div>
       <div>
         <h3 className="text-md font-semibold pb-3">Amount Range</h3>
-        <div className="flex gap-4 ">
+        <div className="flex flex-col gap-2 ">
+          <div className="flex gap-4">
+            <input
+              type="number"
+              placeholder="0"
+              className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
+            />
+            <input
+              type="number"
+              placeholder="1000"
+              className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
+            />
+          </div>
           <input
-            type="number"
-            placeholder="0"
-            className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
-          />
-          <input
-            type="number"
-            placeholder="1000"
-            className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
+            type="range"
+            min="1"
+            max="1000"
+            value="40"
+            className="range w-full"
           />
         </div>
       </div>
-      <div className="w-screen z-40 absolute inset-x-0 top-10">
+      <div className="w-[600%] z-40 absolute inset-x-0 left-20 -top-20">
         {showModal && <AddModal setXbtn={setShowModal} />}
       </div>
     </div>
