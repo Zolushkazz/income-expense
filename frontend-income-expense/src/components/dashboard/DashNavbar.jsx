@@ -16,7 +16,7 @@ const arr = [
 export const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-[#fff] w-screen absolute top-0 inset-x-0 px-[18%]">
+    <div className="bg-[#fff] w-screen absolute top-0 inset-x-0 px-[23%]">
       <div className="flex justify-between py-2">
         <div className="flex gap-6 items-center">
           <Image src="/geldLogo.png" width={40} height={40} alt="" />

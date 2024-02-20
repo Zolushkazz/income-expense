@@ -9,7 +9,7 @@ export const RecordCol = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="relative w-1/5 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
+    <div className="relative w-1/4 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
       <h2 className="text-xl font-semibold">Records</h2>
       <div className="flex flex-col gap-4">
         <button
@@ -33,15 +33,27 @@ export const RecordCol = () => {
         <h2 className="text-md font-semibold">Types</h2>
         <div className="pl-2">
           <div className="flex items-center gap-3  ">
-            <LuCircle color="lightgray" />
+            <input
+              type="radio"
+              className="border-blue radio w-[15px] h-[15px]"
+              name="type"
+            />
             <p className="text-md">All</p>
           </div>
           <div className="flex items-center gap-3">
-            <LuCircle color="lightgray" />
+            <input
+              type="radio"
+              className="border-blue radio w-[15px] h-[15px]"
+              name="type"
+            />
             <p className="text-md">Income</p>
           </div>
           <div className="flex items-center gap-3">
-            <LuCircle color="lightgray" />
+            <input
+              type="radio"
+              className="border-blue radio w-[15px] h-[15px]"
+              name="type"
+            />
             <p className="text-md">Expense</p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-// import Link from "next/link";
+
 
 export const Login = () => {
   const [userData, setUserData] = useState({});
@@ -19,7 +19,7 @@ export const Login = () => {
     try {
       await axios.post(url, userData).then((res) => {
         localStorage.setItem("token", res.data);
-        push("/");
+        push("/dashboard");
       });
     } catch (error) {
       console.log(error);
@@ -65,14 +65,14 @@ export const Login = () => {
             required
           />
         </div>
-        {/* <Link href="/dashboard" className="w-[100%] flex justify-center"> */}
-        <button
-          onClick={handleSubmit}
-          className="bg-[#0166FF] w-[45%] px-5 py-3 rounded-3xl text-white text-2xl"
-        >
-          Log in
-        </button>
-        {/* </Link> */}
+
+          <button
+            onClick={handleSubmit}
+            className="bg-[#0166FF] w-[45%] px-5 py-3 rounded-3xl text-white text-2xl"
+          >
+            Log in
+          </button>
+
 
         <div className="flex gap-4">
           <p className="text-xl">Don't have account</p>

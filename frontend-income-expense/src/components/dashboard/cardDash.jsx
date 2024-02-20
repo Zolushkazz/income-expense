@@ -10,22 +10,22 @@ import { RecordCard } from "./RecordCard";
 
 export const CardDash = () => {
   return (
-    <div className="bg-gray-50 w-full h-full gap-4 flex flex-col items-center mt-12">
+    <div className="bg-gray-50 w-full h-full gap-5 flex flex-col items-center mt-12 px-[23%]  ">
       <Navbar />
-      <div className="flex gap-6 mt-6">
-        <div className="relative">
+      <div className="flex gap-10 mt-6 w-full justify-between">
+        <div className="relative ">
           <div>
-            <Image src="/Large.png" width={430} height={230} />
+            <Image src="/Large.png" width={470} height={250} />
           </div>
           <div className="absolute top-6 left-6">
             <Image src="/geldWhite.png" width={70} height={70} />
           </div>
-          <div className="absolute bottom-8 left-8 ">
+          <div className="absolute bottom-8 left-8">
             <p className="text-xl text-gray-300">Cash</p>
             <p className="text-2xl text-white">10,000,00</p>
           </div>
         </div>
-        <div className="bg-white w-[430px] h-[230px] rounded-2xl">
+        <div className="bg-white w-[470px] h-[260px] rounded-2xl">
           <div className="flex justify-start items-center gap-4 px-8 py-3 ">
             <Dot />
             <p className="text-xl font-bold">Your income</p>
@@ -43,7 +43,7 @@ export const CardDash = () => {
           </div>
         </div>
 
-        <div className="bg-white w-[430px] h-[230px] rounded-2xl">
+        <div className="bg-white w-[470px] h-[260px] rounded-2xl">
           <div className="flex justify-start items-center gap-4 px-8 py-3 ">
             <BlueDot />
             <p className="text-xl font-bold">Total expenses</p>
@@ -52,7 +52,7 @@ export const CardDash = () => {
           <div className="flex flex-col justify-center gap-4 px-10 py-6">
             <div>
               <p className="text-4xl">- 1,200,000₮</p>
-              <p className="text-xl text-[#64748B]">Your income amount</p>
+              <p className="text-xl text-[#64748B]">Your expense amount</p>
             </div>
             <div className="flex items-center gap-2">
               <DownArrow />
@@ -61,7 +61,7 @@ export const CardDash = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex items-center justify-between w-full">
         <BarChart />
         <DoughnutChart />
       </div>

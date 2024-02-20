@@ -9,7 +9,7 @@ export const RecordCard = () => {
     { title: "Lending & Renting", amount: "- 1,000₮", time: "3 hours ago" },
   ];
   return (
-    <div className="bg-[#fff] w-3/5 rounded-xl flex flex-col p-8">
+    <div className="bg-[#fff] w-full rounded-xl flex flex-col p-8">
       <h3 className="text-md font-bold text-[#0F172A] pb-3">Last Records</h3>
       <hr />
       <div className=" flex flex-col divide-y-2">

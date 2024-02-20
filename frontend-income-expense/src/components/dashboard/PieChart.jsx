@@ -23,23 +23,22 @@ ChartJS.register(
 const data = {
   datasets: [
     {
-      label: "# of Votes",
+      label: [],
       data: [12, 19, 3, 5, 2],
       backgroundColor: ["#F2901C", "#16BDCA", "#FDBA8C", "#E74694", "#1C64F2"],
     },
   ],
-  labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
 };
 export const DoughnutChart = () => {
   return (
-    <div className="bg-[#fff] w-[570px] h-[284px] p-5 rounded-2xl">
-      <div className="flex justify-between w-[530px] py-3">
+    <div className="bg-[#fff] w-[47%] h-[350px] p-5 rounded-2xl">
+      <div className="flex justify-between  py-3">
         <h3 className="text-xl font-bold">Income-Expense</h3>
         <p>Jun 1 - Nov 30</p>
       </div>
       <hr />
-      <div>
-        <Doughnut className="py-4 h-[284px]" data={data} />
+      <div className="w-[250px] h-[250px]">
+        <Doughnut className="py-4 " data={data} />
       </div>
     </div>
   );

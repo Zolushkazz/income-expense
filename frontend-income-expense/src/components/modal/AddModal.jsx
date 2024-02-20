@@ -6,7 +6,7 @@ export const AddModal = ({ setXbtn }) => {
   const [color, setColor] = useState(false);
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center absolute top-2 -left-[477px] bg-opacity-50 bg-black ">
+    <div className="flex justify-center items-center fixed inset-0 bg-opacity-50 bg-black ">
       <div className="bg-white w-fit h-fit rounded-xl ">
         <div className="flex items-center justify-between py-5 px-6">
           <h3 className="text-xl font-semibold">Add Record</h3>
@@ -52,6 +52,7 @@ export const AddModal = ({ setXbtn }) => {
               <input
                 className="w-full h-20 bg-[#F3F4F6] border rounded-lg pl-2"
                 placeholder="₮ 000.00"
+                type="number"
               />
               <p className="absolute top-0 left-2 text-md">Amount</p>
             </div>

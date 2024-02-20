@@ -60,10 +60,16 @@ const data = {
 
 export const BarChart = () => {
   return (
-    <div className="bg-[#fff] w-[570px] h-[284px] px-8 py-5 rounded-2xl">
+    <div className="bg-[#fff] w-[47%] h-[350px] px-8 py-5 rounded-2xl">
       <h3 className="text-xl font-bold">Income-Expense</h3>
       <hr />
-      <Bar className="py-4 h-[284px]" options={options} data={data} />
+      <Bar
+        className="py-4"
+        width={600}
+        height={300}
+        options={options}
+        data={data}
+      />
     </div>
   );
 };
