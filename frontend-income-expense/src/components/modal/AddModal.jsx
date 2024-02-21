@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { Category } from "./Category";
 
-export const AddModal = ({ setXbtn }) => {
+export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
   const [color, setColor] = useState(false);
 
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-opacity-50 bg-black ">
+    <div className="flex justify-center items-center fixed inset-0 bg-opacity-50 bg-black">
       <div className="bg-white w-fit h-fit rounded-xl ">
         <div className="flex items-center justify-between py-5 px-6">
           <h3 className="text-xl font-semibold">Add Record</h3>
@@ -14,7 +14,7 @@ export const AddModal = ({ setXbtn }) => {
             onClick={() => {
               setXbtn(false);
             }}
-            className="text-xl"
+            className="text-3xl"
           >
             x
           </button>
@@ -59,7 +59,7 @@ export const AddModal = ({ setXbtn }) => {
             <div className="relative w-full mb-10">
               <h3>Category</h3>
 
-              <Category />
+              <Category handleShowRecordModal={handleShowRecordModal} />
             </div>
             <div className="flex gap-8 items-center w-96">
               <div className="">
@@ -105,6 +105,7 @@ export const AddModal = ({ setXbtn }) => {
           </div>
         </div>
       </div>
+      {}
     </div>
   );
 };

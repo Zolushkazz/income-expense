@@ -2,20 +2,31 @@ import { LuCircle } from "react-icons/lu";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ColCategory } from "./ColCategory";
 import { AddModal } from "../modal/AddModal";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Slider } from "@/components/ui/slider";
+import { ModalContext } from "@/context/RecordModal";
+import { AddCategory } from "../modal/AddCategory";
 
 export const RecordCol = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showRecordModal, setShowRecordModal] = useState(false);
+  const { showModal, setShowModal } = useContext(ModalContext);
+
+  const handleModalShow = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleShowRecordModal = () => {
+    if (showModal) setShowModal(false);
+    setShowRecordModal(!showRecordModal);
+  };
+  console.log(showRecordModal);
 
   return (
-    <div className="relative w-1/4 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-6">
+    <div className="relative w-1/4 h-fit bg-[#fff] mx-auto flex flex-col justify-center px-4 py-6 rounded-xl mt-6 gap-10">
       <h2 className="text-xl font-semibold">Records</h2>
       <div className="flex flex-col gap-4">
         <button
-          onClick={() => {
-            setShowModal(true);
-          }}
+          onClick={handleModalShow}
           className="bg-[#0166FF] rounded-[20px] text-white py-1"
         >
           + Add
@@ -72,7 +83,7 @@ export const RecordCol = () => {
       </div>
       <div>
         <h3 className="text-md font-semibold pb-3">Amount Range</h3>
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col gap-8 ">
           <div className="flex gap-4">
             <input
               type="number"
@@ -85,17 +96,17 @@ export const RecordCol = () => {
               className="border-2 w-[50%] bg-[#F3F4F6] py-2 rounded-lg px-2"
             />
           </div>
-          <input
-            type="range"
-            min="1"
-            max="1000"
-            value="40"
-            className="range w-full"
-          />
+          <Slider defaultValue={[0, 500]} max={1000} step={1} />
         </div>
       </div>
       <div className="w-[600%] z-40 absolute inset-x-0 left-20 -top-20">
-        {showModal && <AddModal setXbtn={setShowModal} />}
+        {showModal && (
+          <AddModal
+            setXbtn={setShowModal}
+            handleShowRecordModal={handleShowRecordModal}
+          />
+        )}
+        {showRecordModal && <AddCategory />}
       </div>
     </div>
   );

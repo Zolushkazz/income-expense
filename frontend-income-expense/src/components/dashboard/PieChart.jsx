@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { PieData } from "./PieData";
 
 ChartJS.register(
   CategoryScale,
@@ -37,8 +38,42 @@ export const DoughnutChart = () => {
         <p>Jun 1 - Nov 30</p>
       </div>
       <hr />
-      <div className="w-[250px] h-[250px]">
-        <Doughnut className="py-4 " data={data} />
+      <div className="flex">
+        <div className="w-[250px] h-[250px]">
+          <Doughnut className="py-4 " data={data} />
+        </div>
+        <div className="w-full flex flex-col items-center justify-between py-2">
+          <PieData
+            color={"#F2901C"}
+            desc={"Bills"}
+            ammount={"5’000’000₮"}
+            percent={"15.50%"}
+          />
+          <PieData
+            color={"#16BDCA"}
+            desc={"Food"}
+            ammount={"5’000’000₮"}
+            percent={"15.50%"}
+          />
+          <PieData
+            color={"#FDBA8C"}
+            desc={"Shopping"}
+            ammount={"5’000’000₮"}
+            percent={"15.50%"}
+          />
+          <PieData
+            color={"#E74694"}
+            desc={"Insurance"}
+            ammount={"5’000’000₮"}
+            percent={"15.50%"}
+          />
+          <PieData
+            color={"#1C64F2"}
+            desc={"Clothing"}
+            ammount={"5’000’000₮"}
+            percent={"15.50%"}
+          />
+        </div>
       </div>
     </div>
   );

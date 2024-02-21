@@ -8,13 +8,13 @@ import {
   PiTShirtFill,
 } from "react-icons/pi";
 import { HiComputerDesktop } from "react-icons/hi2";
+import { useState } from "react";
 
-export const CategoryDrop = ({ catBtn }) => {
+import { AddCategory } from "./AddCategory";
+import { AddModal } from "./AddModal";
+
+export const CategoryDrop = ({ catBtn, handleShowRecordModal }) => {
   const options = [
-    {
-      icon: <FaPlusCircle size={24} color="#0166FF" />,
-      name: " Add Category",
-    },
     { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
     { icon: <PiGiftFill size={24} color="#FF4545" />, name: "Gift" },
     { icon: <PiForkKnifeFill size={24} color="#FB8A22" />, name: "Food" },
@@ -32,8 +32,22 @@ export const CategoryDrop = ({ catBtn }) => {
     { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
   ];
 
+  const [dropIcons, setDropIcons] = useState(false);
+  const [isCategoryClicked, setIsCategoryClicked] = useState(false);
+
+  const handleDropIcons = () => {
+    setDropIcons(!dropIcons);
+  };
+
   return (
-    <div className="border-2 w-[348px] h-[382px] px-4 overflow-auto bg-white">
+    <div className="border-2 w-[348px] h-[382px] px-4 overflow-auto bg-white relative">
+      <button
+        onClick={handleShowRecordModal}
+        className="flex items-center gap-10 p-3 text-xl"
+      >
+        <FaPlusCircle size={24} color="#0166FF" /> Add category
+      </button>
+      <hr />
       {options.map(({ icon, name }, index) => {
         return (
           <div key={index} className="flex items-center gap-10 p-3 ">

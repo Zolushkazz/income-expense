@@ -62,7 +62,7 @@ export const DropDown = ({ setBtn }) => {
     <PiGlobeSimpleFill size={24} />,
   ];
   return (
-    <div className="border-2 bg-white w-[312px] p-6 h-[336px]">
+    <div className="border-2 bg-white w-[312px] p-6 h-[336px] absolute -top-24 left-3">
       <div className="grid grid-cols-6 gap-4 ">
         {icons.map((el, index) => {
           return <div key={index}>{el}</div>;
