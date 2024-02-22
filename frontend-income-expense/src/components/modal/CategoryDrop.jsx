@@ -33,11 +33,11 @@ export const CategoryDrop = ({ catBtn, handleShowRecordModal }) => {
   ];
 
   const [dropIcons, setDropIcons] = useState(false);
-  const [isCategoryClicked, setIsCategoryClicked] = useState(false);
+  // const [isCategoryClicked, setIsCategoryClicked] = useState(false);
 
-  const handleDropIcons = () => {
-    setDropIcons(!dropIcons);
-  };
+  // const handleDropIcons = () => {
+  //   setDropIcons(!dropIcons);
+  // };
 
   return (
     <div className="border-2 w-[348px] h-[382px] px-4 overflow-auto bg-white relative">

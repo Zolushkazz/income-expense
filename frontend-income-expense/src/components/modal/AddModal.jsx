@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { Category } from "./Category";
 
 export const AddModal = ({ setXbtn, handleShowRecordModal }) => {

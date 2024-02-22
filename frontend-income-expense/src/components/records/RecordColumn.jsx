@@ -1,4 +1,3 @@
-import { LuCircle } from "react-icons/lu";
 import { AiOutlinePlus } from "react-icons/ai";
 import { ColCategory } from "./ColCategory";
 import { AddModal } from "../modal/AddModal";
@@ -106,7 +105,7 @@ export const RecordCol = () => {
             handleShowRecordModal={handleShowRecordModal}
           />
         )}
-        {showRecordModal && <AddCategory />}
+        {showRecordModal && <AddCategory setXbtn={setShowModal} />}
       </div>
     </div>
   );

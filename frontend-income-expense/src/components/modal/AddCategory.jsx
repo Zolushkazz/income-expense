@@ -5,15 +5,22 @@ import { FaCaretDown } from "react-icons/fa6";
 
 export const AddCategory = () => {
   const [dropDown, setDropDown] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   return (
-    <>
+    <div style={{ display: show ? "none" : "block" }}>
       <div className="fixed inset-0 bg-black/30 z-10" />
       <div className="flex items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
         <div className="w-[500px] h-[276px] rounded-xl bg-white px-3 py-2 relative">
           <div className="flex items-center justify-between p-2">
             <p className="text-xl">Add Category</p>
-            <p className="text-xl">X</p>
+            <p onClick={handleShow} className="text-xl cursor-pointer">
+              X
+            </p>
           </div>
           <hr />
           <div className="flex gap-12 flex-col mt-10">
@@ -45,6 +52,6 @@ export const AddCategory = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
