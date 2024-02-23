@@ -1,6 +1,6 @@
 import fs from "fs";
 import { makeHash } from "../utils/password-hash.js";
-// import { v4 } from "uuid";
+import { v4 } from "uuid";
 import { client } from "../genIndex.js";
 
 // const userDb = "./models/users.json";
@@ -11,16 +11,17 @@ const createUserQuery = async (email, password, username) => {
   `;
   const userId = await client.query(userCreateQuery, [
     email,
-    password,
+    makeHash(password),
     username,
   ]);
+
   return userId;
 };
 
 export const signUpUsers = async (req, res) => {
   const { email, password, username } = req.body;
   try {
-    const userId = await createUserQuery(email, password, username);
+     const userId = await createUserQuery(email, password, username);
     return userId;
   } catch (err) {
     console.log(err);

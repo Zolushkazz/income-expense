@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 export const SignUp = (props) => {
@@ -28,7 +28,6 @@ export const SignUp = (props) => {
 
   const { password, rePassword } = confirmPass;
 
-  console.log(confirmPass);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +60,7 @@ export const SignUp = (props) => {
           <input
             onChange={handleChange}
             className="w-full px-5 py-3 border-2 rounded-md bg-gray-100 text-2xl"
-            name="name"
+            name="username"
             type="text"
             placeholder="Name"
             required

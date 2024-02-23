@@ -15,10 +15,10 @@ export const CardDash = () => {
       <div className="flex gap-10 mt-6 w-full justify-between">
         <div className="relative ">
           <div>
-            <Image src="/Large.png" width={470} height={250} />
+            <Image src="/Large.png" width={470} height={250} alt="" />
           </div>
           <div className="absolute top-6 left-6">
-            <Image src="/geldWhite.png" width={70} height={70} />
+            <Image src="/geldWhite.png" width={70} height={70} alt="" />
           </div>
           <div className="absolute bottom-8 left-8">
             <p className="text-xl text-gray-300">Cash</p>

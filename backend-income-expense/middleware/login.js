@@ -1,8 +1,16 @@
 import fs from "fs";
 import { compareHash } from "../utils/password-hash.js";
 import jwt from "jsonwebtoken";
+import { client } from "/Users/23LP1625/Desktop/income-Expense/backend-income-expense/genIndex.js";
 
-const loginDb = "./models/users.json";
+// const loginDb = "./models/users.json";
+
+export const loginQuery = async (email) => {
+  const loginUserQuery = `SELECT * FROM users WHERE email = $1`;
+  const user = await client.query(loginUserQuery, [email]);
+
+  return user.rows;
+};
 
 export const loginMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
@@ -11,9 +19,12 @@ export const loginMiddleware = async (req, res, next) => {
     if (!email || !password) {
       res.send("Please fill all the fields");
     }
-    const newLoginUser = await fs.readFileSync(loginDb, "utf-8");
-    const allLoginers = JSON.parse(newLoginUser);
-    const exactLoginer = allLoginers.find((loginer) => loginer.email === email);
+
+    const loggedInUser = await loginQuery(email);
+
+    const exactLoginer = loggedInUser.find(
+      (loginer) => loginer.email === email
+    );
 
     console.log(exactLoginer);
     if (!exactLoginer) {
