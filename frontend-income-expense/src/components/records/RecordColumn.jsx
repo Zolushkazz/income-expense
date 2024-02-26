@@ -14,7 +14,10 @@ export const RecordCol = () => {
     setShowModal(!showModal);
   };
 
+
+
   const handleShowRecordModal = () => {
+    console.log("cat modal");
     if (showModal) setShowModal(false);
     setShowRecordModal(!showRecordModal);
   };

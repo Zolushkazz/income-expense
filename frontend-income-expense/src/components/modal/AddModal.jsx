@@ -2,7 +2,19 @@ import { useState } from "react";
 import { Category } from "./Category";
 
 export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
+  const [getInputValue, setGetInputValue] = useState({});
+  const [category, setCategory] = useState("");
+
+  const InputValue = (event) => {
+    const { name, value } = event.target;
+    setGetInputValue({ ...getInputValue, [name]: value });
+  };
+
   const [color, setColor] = useState(false);
+
+  const handleSubmit = async () => {
+    console.log({ category, ...getInputValue });
+  };
 
   return (
     <div className="flex justify-center items-center fixed inset-0 bg-opacity-50 bg-black">
@@ -25,6 +37,7 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
               <button
                 onClick={() => {
                   setColor(true);
+                  setGetInputValue({ expense: true });
                 }}
                 className={`w-1/2 py-2 rounded-[25px] ${
                   color
@@ -37,6 +50,7 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
               <button
                 onClick={() => {
                   setColor(false);
+                  setGetInputValue({ expense: false });
                 }}
                 className={`w-1/2 py-2 rounded-[25px] ${
                   color
@@ -49,21 +63,28 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
             </div>
             <div className="relative bg-[#F3F4F6] border rounded-lg pl-2">
               <input
+                name="amount"
                 className="w-full h-20 bg-[#F3F4F6] border rounded-lg pl-2"
                 placeholder="₮ 000.00"
                 type="number"
+                onChange={InputValue}
               />
               <p className="absolute top-0 left-2 text-md">Amount</p>
             </div>
             <div className="relative w-full mb-10">
-              <h3>Category</h3>
+              <h3 onClick={handleShowRecordModal}>Category</h3>
 
-              <Category handleShowRecordModal={handleShowRecordModal} />
+              <Category
+                setCategory={setCategory}
+                handleShowRecordModal={handleShowRecordModal}
+              />
             </div>
             <div className="flex gap-8 items-center w-96">
               <div className="">
                 <p>Date</p>
                 <input
+                  onChange={InputValue}
+                  name="date"
                   type="date"
                   className="w-44 border-2 rounded-lg py-2 px-2"
                 />
@@ -71,12 +92,15 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
               <div className="">
                 <p>Date</p>
                 <input
+                  onChange={InputValue}
+                  name="time"
                   type="time"
                   className="w-44 border-2 rounded-lg py-2 px-2"
                 />
               </div>
             </div>
             <button
+              onClick={handleSubmit}
               className={`w-full rounded-[25px] p-2 bg-[#0166FF]  ${
                 color
                   ? "text-[#ffffff] bg-[#0166FF]"
@@ -90,6 +114,8 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
             <div className="flex flex-col gap-3 ">
               <p>Payee</p>
               <input
+                onChange={InputValue}
+                name="payee"
                 placeholder="Write here"
                 className="h-12 w-full p-3 rounded-lg bg-[#F3F4F6]"
               />
@@ -97,6 +123,8 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
             <div className="flex flex-col gap-3">
               <p>Note</p>
               <textarea
+                onChange={InputValue}
+                name="note"
                 placeholder="Write here"
                 className="h-60 w-full p-3 rounded-lg bg-[#F3F4F6]"
               />

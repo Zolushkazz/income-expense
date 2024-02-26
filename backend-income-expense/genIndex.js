@@ -25,6 +25,7 @@ app.use(userRouter);
 (async () => {
   await client.connect();
   await createUserTable();
+  await createTableRecords();
   console.log("Connected to DB");
 })();
 
@@ -38,6 +39,22 @@ const createUserTable = async () => {
     )`;
 
   await client.query(userTableCreateQuery);
+};
+
+// records creating table
+const createTableRecords = async () => {
+  const recordsTableQuery = `CREATE TABLE IF NOT EXISTS records (
+    id SERIAL PRIMARY KEY,
+    userId TEXT,
+    amount INT,
+    category TEXT,
+    date TEXT,
+    time TEXT,
+    payee TEXT,
+    note TEXT,
+    expense BOOL
+  )`;
+  await client.query(recordsTableQuery);
 };
 
 app.listen(8000, () => {

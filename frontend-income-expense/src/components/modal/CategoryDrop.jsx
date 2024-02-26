@@ -10,10 +10,14 @@ import {
 import { HiComputerDesktop } from "react-icons/hi2";
 import { useState } from "react";
 
-import { AddCategory } from "./AddCategory";
-import { AddModal } from "./AddModal";
-
-export const CategoryDrop = ({ catBtn, handleShowRecordModal }) => {
+export const CategoryDrop = ({
+  catBtn,
+  handleShowRecordModal,
+  setCategory,
+}) => {
+  // const handleCategory = (icon, name) => {
+  //   setGetInputValue({ ...getInputValue, icon: icon, name: name });
+  // };
   const options = [
     { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
     { icon: <PiGiftFill size={24} color="#FF4545" />, name: "Gift" },
@@ -49,8 +53,14 @@ export const CategoryDrop = ({ catBtn, handleShowRecordModal }) => {
       </button>
       <hr />
       {options.map(({ icon, name }, index) => {
+        const handleCategory = () => setCategory(name);
+
         return (
-          <div key={index} className="flex items-center gap-10 p-3 ">
+          <div
+            key={index}
+            className="flex items-center gap-10 p-3"
+            onClick={handleCategory}
+          >
             <div>{icon}</div>
             <p className="text-xl">{name}</p>
           </div>
