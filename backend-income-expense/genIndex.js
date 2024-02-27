@@ -28,6 +28,11 @@ app.use(userRouter);
   await createTableRecords();
   console.log("Connected to DB");
 })();
+client.on("error", async (error, cl) => {
+  if (error) {
+    await client.connect();
+  }
+});
 
 // user table create
 const createUserTable = async () => {

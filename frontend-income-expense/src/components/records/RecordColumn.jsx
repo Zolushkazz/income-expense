@@ -14,8 +14,6 @@ export const RecordCol = () => {
     setShowModal(!showModal);
   };
 
-
-
   const handleShowRecordModal = () => {
     console.log("cat modal");
     if (showModal) setShowModal(false);
@@ -104,6 +102,7 @@ export const RecordCol = () => {
       <div className="w-[600%] z-40 absolute inset-x-0 left-20 -top-20">
         {showModal && (
           <AddModal
+            setShowModal={setShowModal}
             setXbtn={setShowModal}
             handleShowRecordModal={handleShowRecordModal}
           />

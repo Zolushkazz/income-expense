@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Category } from "./Category";
+import axios from "axios";
 
-export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
+export const AddModal = ({ setXbtn, handleShowRecordModal, setShowModal }) => {
   const [getInputValue, setGetInputValue] = useState({});
   const [category, setCategory] = useState("");
+  const [getRecordValue, setGetRecordValue] = useState();
 
   const InputValue = (event) => {
     const { name, value } = event.target;
@@ -12,8 +14,16 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
 
   const [color, setColor] = useState(false);
 
+  const url = "http://localhost:8000/records/post";
+
   const handleSubmit = async () => {
     console.log({ category, ...getInputValue });
+    try {
+      await axios.post(url, getInputValue);
+    } catch (err) {
+      console.log(err);
+    }
+    setXbtn(false);
   };
 
   return (
@@ -75,8 +85,11 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
               <h3 onClick={handleShowRecordModal}>Category</h3>
 
               <Category
+                setGetRecordValue={setGetRecordValue}
+                getRecordValue={getRecordValue}
                 setCategory={setCategory}
                 handleShowRecordModal={handleShowRecordModal}
+                setGetInputValue={setGetInputValue}
               />
             </div>
             <div className="flex gap-8 items-center w-96">
@@ -132,7 +145,6 @@ export const AddModal = ({ setXbtn, handleShowRecordModal }) => {
           </div>
         </div>
       </div>
-      {}
     </div>
   );
 };

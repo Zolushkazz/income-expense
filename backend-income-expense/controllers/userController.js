@@ -1,5 +1,6 @@
 //login
 //signup 2l orj irne
+import { recordsUsers } from "../queries/recordsQuery.js";
 import { signUpUsers } from "../queries/signUpUsers.js";
 
 //signup
@@ -20,4 +21,18 @@ export const loginUser = async (req, res) => {
   } catch (err) {
     res.status(400).send(err.message);
   }
+};
+
+//records
+export const recordsUserController = async (req, res) => {
+  try {
+    const records = await recordsUsers(req);
+    res.json(records);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
+export const getUser = async () => {
+  //token zadlana dotroos n userId avna
 };

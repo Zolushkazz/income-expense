@@ -1,12 +1,9 @@
 import Image from "next/image";
 import { Navbar } from "./DashNavbar";
-import { Dot } from "@/images/dot";
-import { Arrow } from "@/images/arrow";
-import { BlueDot } from "@/images/blueDot";
-import { DownArrow } from "@/images/downArrow";
 import { BarChart } from "./BarChart";
 import { DoughnutChart } from "./PieChart";
 import { RecordCard } from "./RecordCard";
+import { Dot, Arrow, BlueDot, DownArrow } from "@/images";
 
 export const CardDash = () => {
   return (

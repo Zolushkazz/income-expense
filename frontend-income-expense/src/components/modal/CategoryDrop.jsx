@@ -9,11 +9,15 @@ import {
 } from "react-icons/pi";
 import { HiComputerDesktop } from "react-icons/hi2";
 import { useState } from "react";
+import { Category } from "./Category";
 
 export const CategoryDrop = ({
   catBtn,
   handleShowRecordModal,
   setCategory,
+  setGetRecordValue,
+  setCategories,
+  setGetInputValue,
 }) => {
   // const handleCategory = (icon, name) => {
   //   setGetInputValue({ ...getInputValue, icon: icon, name: name });
@@ -36,12 +40,7 @@ export const CategoryDrop = ({
     { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
   ];
 
-  const [dropIcons, setDropIcons] = useState(false);
   // const [isCategoryClicked, setIsCategoryClicked] = useState(false);
-
-  // const handleDropIcons = () => {
-  //   setDropIcons(!dropIcons);
-  // };
 
   return (
     <div className="border-2 w-[348px] h-[382px] px-4 overflow-auto bg-white relative">
@@ -53,12 +52,17 @@ export const CategoryDrop = ({
       </button>
       <hr />
       {options.map(({ icon, name }, index) => {
-        const handleCategory = () => setCategory(name);
+        const handleCategory = (el) => {
+          setCategory(name);
+          setGetRecordValue(name);
+          setCategories(false);
+          setGetInputValue((prev) => ({ ...prev, category: name }));
+        };
 
         return (
           <div
             key={index}
-            className="flex items-center gap-10 p-3"
+            className="flex items-center gap-10 p-3 cursor-pointer"
             onClick={handleCategory}
           >
             <div>{icon}</div>

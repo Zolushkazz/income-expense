@@ -21,12 +21,14 @@ const createUserQuery = async (email, password, username) => {
 export const signUpUsers = async (req, res) => {
   const { email, password, username } = req.body;
   try {
-     const userId = await createUserQuery(email, password, username);
+    const userId = await createUserQuery(email, password, username);
     return userId;
   } catch (err) {
     console.log(err);
   }
 };
+
+
 
 // export const signUpUsers = async (req, res) => {
 //   const { email, name, password } = req.body;
