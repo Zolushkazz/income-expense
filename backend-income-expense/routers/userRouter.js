@@ -18,4 +18,6 @@ userRouter.get("/users/token", tokenCheck);
 
 userRouter.post("/records/post", recordsUserController);
 
+userRouter.get("/")
+
 export default userRouter;

@@ -4,8 +4,12 @@ import { BarChart } from "./BarChart";
 import { DoughnutChart } from "./PieChart";
 import { RecordCard } from "./RecordCard";
 import { Dot, Arrow, BlueDot, DownArrow } from "@/images";
+import { useContext } from "react";
+import { UserContext } from "../UserProvider";
 
+//it is a home page
 export const CardDash = () => {
+  const { userEmail } = useContext(UserContext);
   return (
     <div className="bg-gray-50 w-full h-full gap-5 flex flex-col items-center mt-12 px-[23%]  ">
       <Navbar />

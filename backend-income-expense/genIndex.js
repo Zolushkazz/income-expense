@@ -22,20 +22,21 @@ app.use(express.json());
 
 app.use(userRouter);
 
-(async () => {
-  await client.connect();
-  await createUserTable();
-  await createTableRecords();
-  console.log("Connected to DB");
-})();
-client.on("error", async (error, cl) => {
-  if (error) {
-    await client.connect();
-  }
-});
+// (async () => {
+//   await client.connect();
+//   await createUserTable();
+//   await createTableRecords();
+//   console.log("Connected to DB");
+// })();
+// client.on("error", async (error, cl) => {
+//   if (error) {
+//     await client.connect();
+//   }
+// });
 
 // user table create
 const createUserTable = async () => {
+  // await client.connect();
   const userTableCreateQuery = `CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL,
@@ -44,10 +45,13 @@ const createUserTable = async () => {
     )`;
 
   await client.query(userTableCreateQuery);
+
+  // await client.end()
 };
 
 // records creating table
 const createTableRecords = async () => {
+  // await client.connect();
   const recordsTableQuery = `CREATE TABLE IF NOT EXISTS records (
     id SERIAL PRIMARY KEY,
     userId TEXT,
@@ -61,6 +65,23 @@ const createTableRecords = async () => {
   )`;
   await client.query(recordsTableQuery);
 };
+
+app.post("/verify", async (req, res) => {
+  const header = req.headers.authorization;
+
+  if (!header) {
+    res.status(400).send("Token is not provided");
+  }
+  const token = header.split(" ")[1];
+
+  //bodygoor data header eer token damjdag
+});
+//category creating table
+// const createCategoryTable = async () =>{
+//   const categoryTableQuery = `CREATE TABLE IF NOT EXISTS category (
+
+//   )`
+// }
 
 app.listen(8000, () => {
   console.log("http://localhost:8000");

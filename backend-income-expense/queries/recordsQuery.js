@@ -12,7 +12,6 @@ const recordsQuery = async (
   expense
 ) => {
   const userRecords = `INSERT INTO records (userId, amount, category, date, time, payee, note, expense) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`;
-
   const records = await client.query(userRecords, [
     userId,
     amount,
@@ -28,6 +27,7 @@ const recordsQuery = async (
 };
 
 export const recordsUsers = async (req) => {
+  await client.connect();
   const { userId, amount, category, date, time, payee, note, expense } =
     req.body;
 
@@ -42,6 +42,7 @@ export const recordsUsers = async (req) => {
       note,
       expense
     );
+    await client.end();
     return records;
   } catch (err) {
     console.log(err);

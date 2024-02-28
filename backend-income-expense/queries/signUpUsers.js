@@ -19,9 +19,11 @@ const createUserQuery = async (email, password, username) => {
 };
 
 export const signUpUsers = async (req, res) => {
+  await client.connect();
   const { email, password, username } = req.body;
   try {
     const userId = await createUserQuery(email, password, username);
+    await client.end();
     return userId;
   } catch (err) {
     console.log(err);
