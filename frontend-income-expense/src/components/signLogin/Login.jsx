@@ -1,26 +1,25 @@
 import Image from "next/image";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+const URL = "http://localhost:8000/users/login";
 
 export const Login = () => {
   const [userData, setUserData] = useState({});
 
   const { push } = useRouter();
-  const url = "http://localhost:8000/users/login";
 
   const jumpToPage = () => {
     push("/signupPage");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
-      await axios.post(url, userData).then((res) => {
-        localStorage.setItem("token", res.data);
-        push("/dashboard");
-      });
+      const res = await axios.post(URL, userData);
+      console.log(res, "resresres");
+      localStorage.setItem("token", res.data);
+      push("/dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -28,10 +27,7 @@ export const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
+    setUserData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -66,13 +62,12 @@ export const Login = () => {
           />
         </div>
 
-          <button
-            onClick={handleSubmit}
-            className="bg-[#0166FF] w-[45%] px-5 py-3 rounded-3xl text-white text-2xl"
-          >
-            Log in
-          </button>
-
+        <button
+          onClick={handleSubmit}
+          className="bg-[#0166FF] w-[45%] px-5 py-3 rounded-3xl text-white text-2xl"
+        >
+          Log in
+        </button>
 
         <div className="flex gap-4">
           <p className="text-xl">Don't have account</p>

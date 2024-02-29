@@ -74,14 +74,15 @@ app.post("/verify", async (req, res) => {
   }
   const token = header.split(" ")[1];
 
+  const { email } = jwt.decode(token);
+
+  try {
+    res.send(email);
+  } catch (err) {
+    console.log(err);
+  }
   //bodygoor data header eer token damjdag
 });
-//category creating table
-// const createCategoryTable = async () =>{
-//   const categoryTableQuery = `CREATE TABLE IF NOT EXISTS category (
-
-//   )`
-// }
 
 app.listen(8000, () => {
   console.log("http://localhost:8000");

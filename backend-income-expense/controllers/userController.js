@@ -15,13 +15,16 @@ export const signUpController = async (req, res) => {
 };
 
 //login
-export const loginUser = async (req, res) => {
-  try {
-    res.send(req.Token);
-  } catch (err) {
-    res.status(400).send(err.message);
-  }
-};
+// export const loginUser = async (req, res) => {
+//   try {
+//     console.log(req);
+//     console.log("asdasdasd");
+//     console.log(req, "reqreqreq");
+//     res.send(req.Token);
+//   } catch (err) {
+//     res.status(400).send(err.message);
+//   }
+// };
 
 //records
 export const recordsUserController = async (req, res) => {

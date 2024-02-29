@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const UserContext = createContext({});
 
@@ -8,7 +8,8 @@ export const UserProvider = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("Token");
+    const token =
+      typeof window !== "undefined" && localStorage.getItem("Token");
 
     if (!token) {
       router.push("/login");
@@ -28,7 +29,7 @@ export const UserProvider = ({ children }) => {
           }
         );
         setUserEmail(result?.data);
-        router.push("/");
+        router.push("/dashboard");
       } catch (err) {
         localStorage.removeItem("token");
         router.push("/login");
@@ -36,7 +37,12 @@ export const UserProvider = ({ children }) => {
     };
     verifyToken();
   }, []);
+
   return (
-    <UserContext.Provider value={userEmail}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userEmail }}>
+      {children}
+    </UserContext.Provider>
   );
 };
+
+export const userContext = () => useContext(UserContext);

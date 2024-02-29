@@ -6,45 +6,38 @@ import { client } from "/Users/23LP1625/Desktop/income-Expense/backend-income-ex
 // const loginDb = "./models/users.json";
 
 export const loginQuery = async (email) => {
+  await client.connect();
   const loginUserQuery = `SELECT * FROM users WHERE email = $1`;
   const user = await client.query(loginUserQuery, [email]);
 
-  return user.rows;
+  await client.end();
+  return user.rows[0];
 };
 
 export const loginMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
-
   try {
     if (!email || !password) {
       res.send("Please fill all the fields");
     }
+    const rows = await loginQuery(email);
+    console.log(rows);
 
-    const loggedInUser = await loginQuery(email);
-
-    const exactLoginer = loggedInUser.find(
-      (loginer) => loginer.email === email
-    );
-
-    console.log(exactLoginer);
-    if (!exactLoginer) {
+    if (!rows.length) {
       res.status(400).send("invalid email or password");
     }
-    const pass = compareHash(password, exactLoginer.password);
-    console.log(pass);
+
+    const pass = compareHash(password, rows.password);
+
     if (pass) {
-      const token = jwt.sign(
-        { email: exactLoginer.email },
-        process.env.JWT_SECRET || "defaultSecret",
-        { expiresIn: "1d" }
-      );
-      req.Token = token;
+      req.rows = rows;
       next();
       return;
     } else {
-      res.status(400).send("invalid email or password");
+      res.status(400).send("incorrect email or password");
+      return;
     }
   } catch (err) {
-    res.status(400).send("Invalid password or email");
+    res.status(400).send("Wrong password or email");
   }
 };
