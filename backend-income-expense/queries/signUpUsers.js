@@ -7,21 +7,21 @@ import { client } from "../genIndex.js";
 
 // table ruu data bichdeg hel
 const createUserQuery = async (email, password, username) => {
-  const userCreateQuery = `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id
-  `;
+  const userCreateQuery = `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`;
+
   const userId = await client.query(userCreateQuery, [
     email,
     makeHash(password),
     username,
   ]);
 
-  return userId;
+  return userId.rows[0];
 };
 
 export const signUpUsers = async (req, res) => {
-  await client.connect();
   const { email, password, username } = req.body;
   try {
+    await client.connect();
     const userId = await createUserQuery(email, password, username);
     await client.end();
     return userId;
@@ -29,8 +29,6 @@ export const signUpUsers = async (req, res) => {
     console.log(err);
   }
 };
-
-
 
 // export const signUpUsers = async (req, res) => {
 //   const { email, name, password } = req.body;

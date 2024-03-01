@@ -16,9 +16,9 @@ export const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post(URL, userData);
-      console.log(res, "resresres");
-      localStorage.setItem("token", res.data);
+      const { data } = await axios.post(URL, userData);
+      console.log(userData, "resresres");
+      localStorage.setItem("token", data.token);
       push("/dashboard");
     } catch (error) {
       console.log(error);

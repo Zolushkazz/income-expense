@@ -1,11 +1,14 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
-const UserContext = createContext()
+const UserContext = createContext();
 
-export const UserProvider = ({children}) =>{
-const [userData, setUserData] = useState("");
+export const UserProvider = ({ children }) => {
+  const [userData, setUserData] = useState("");
 
-const handleChange = (ev) =>{
-    setUserData(ev.target.value)
-}
-}
+  const token = typeof window !== "undefined" && localStorage.getItem("token");
+
+  const handleChange = (ev) => {
+    setUserData(ev.target.value);
+  };
+};

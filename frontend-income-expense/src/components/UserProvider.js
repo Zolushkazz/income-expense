@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 export const UserContext = createContext({});
 
@@ -7,32 +8,29 @@ export const UserProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState();
   const router = useRouter();
 
-  useEffect(() => {
-    const token =
-      typeof window !== "undefined" && localStorage.getItem("Token");
+  const token = typeof window !== "undefined" && localStorage.getItem("token");
 
+  useEffect(() => {
     if (!token) {
-      router.push("/login");
-      return;
+      return router.push("/login");
     }
 
     const verifyToken = async () => {
       try {
-        const result = await axios.post(
-          "http://localhost:8000/verify",
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const result = await axios.get("http://localhost:8000/verify", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
         setUserEmail(result?.data);
+
         router.push("/dashboard");
       } catch (err) {
-        localStorage.removeItem("token");
-        router.push("/login");
+        console.log(err.message);
+        // localStorage.removeItem("token");
+        // router.push("/login");
       }
     };
     verifyToken();

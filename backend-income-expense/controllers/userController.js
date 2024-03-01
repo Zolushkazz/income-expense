@@ -8,7 +8,7 @@ import { signUpUsers } from "../queries/signUpUsers.js";
 export const signUpController = async (req, res) => {
   try {
     const users = await signUpUsers(req);
-    res.send(JSON.stringify(users));
+    res.status(200).send(users);
   } catch (error) {
     res.status(400).send(error.message);
   }

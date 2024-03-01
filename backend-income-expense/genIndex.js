@@ -44,7 +44,7 @@ const createUserTable = async () => {
     username TEXT NOT NULL
     )`;
 
-  await client.query(userTableCreateQuery);
+  // await client.query(userTableCreateQuery);
 
   // await client.end()
 };
@@ -63,26 +63,8 @@ const createTableRecords = async () => {
     note TEXT,
     expense BOOL
   )`;
-  await client.query(recordsTableQuery);
+  // await client.query(recordsTableQuery);
 };
-
-app.post("/verify", async (req, res) => {
-  const header = req.headers.authorization;
-
-  if (!header) {
-    res.status(400).send("Token is not provided");
-  }
-  const token = header.split(" ")[1];
-
-  const { email } = jwt.decode(token);
-
-  try {
-    res.send(email);
-  } catch (err) {
-    console.log(err);
-  }
-  //bodygoor data header eer token damjdag
-});
 
 app.listen(8000, () => {
   console.log("http://localhost:8000");
